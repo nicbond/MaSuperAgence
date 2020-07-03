@@ -32,4 +32,18 @@ class PropertyController extends AbstractController
 		return $this->render('property/index.html.twig',  [
 			'current_menu' => 'properties']);
     }
+	
+	/**
+     * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
+	 * @return Response
+     */
+	public function show($slug, $id): Response
+    {
+		$property = $this->repository->find($id);
+		
+		return $this->render('property/show.html.twig',  [
+			'property' => $property,
+			'current_menu' => 'properties'
+			]);
+    }
 }
