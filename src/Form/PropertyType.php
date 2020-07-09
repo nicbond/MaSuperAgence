@@ -24,7 +24,6 @@ class PropertyType extends AbstractType
             ->add('address')
             ->add('postal_code')
             ->add('sold')
-            ->add('created_at')
         ;
     }
 
