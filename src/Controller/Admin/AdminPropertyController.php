@@ -30,9 +30,9 @@ class AdminPropertyController extends AbstractController
 
 	/**
      * @Route("/admin", name="admin.property.index")
-	 * @return Response
+	 * @return Symfony\Component\HttpFoundation\Response
      */
-    public function index(): Response
+    public function index()
     {
 		$properties = $this->repository->findAll();
 
@@ -42,9 +42,9 @@ class AdminPropertyController extends AbstractController
 	/**
      * @Route("/admin/property/create", name="admin.property.new")
 	 * @param Request $request
-	 * @return Response
+	 * @return Symfony\Component\HttpFoundation\Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request)
     {
 		$property = new Property();
 		
@@ -66,11 +66,11 @@ class AdminPropertyController extends AbstractController
     }
 		
 	/**
-     * @Route("/admin/property/{id}", name="admin.property.edit")
+     * @Route("/admin/property/{id}", name="admin.property.edit", methods="GET|POST")
 	 * @param Request $request
-	 * @return Response
+	 * @return Symfony\Component\HttpFoundation\Response
      */
-    public function edit(Request $request, $id): Response
+    public function edit(Request $request, $id)
     {
 		$property = $this->repository->find($id);
 		
@@ -89,4 +89,21 @@ class AdminPropertyController extends AbstractController
 			'form' => $form->createView()
 			]);
     }
+	
+	/**
+     * @Route("/admin/property/{id}", name="admin.property.delete", methods="DELETE")
+	 * @param Request $request
+	 * @return Symfony\Component\HttpFoundation\Response
+     */
+	public function delete(Request $request, $id)
+	{
+		$property = $this->repository->find($id);
+		
+		if($this->isCsrfTokenValid('delete'. $property->getId(), $request->get('_token'))) {
+			$this->entityManager->remove($property);
+			$this->entityManager->flush();
+			$this->addFlash('success', 'Bien supprimé avec succès');
+		}
+		return $this->redirectToRoute('admin.property.index');
+	}
 }
