@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Property;
+use App\Entity\PropertySearch;
+use App\Form\PropertySearchType;
 use App\Repository\PropertyRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,22 +26,29 @@ class PropertyController extends AbstractController
 	
     /**
      * @Route("/biens", name="property.index")
-	 * @return Response
+     * @param Request $request
+     * @return Response
      */
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
-		$properties = $paginator->paginate(
-		    $this->repository->findAllVisibleQuery(),
-			$request->query->getInt('page', 1),
-			12
-		);
+        $search = new PropertySearch();
 
-		return $this->render('property/index.html.twig',  [
-			'current_menu' => 'properties',
-		    'properties'   => $properties	
-		]);
+        $form = $this->createForm(PropertySearchType::class, $search);
+        $form->handleRequest($request);
+
+        $properties = $paginator->paginate(
+            $this->repository->findAllVisibleQuery($search),
+            $request->query->getInt('page', 1),
+            12
+        );
+
+        return $this->render('property/index.html.twig',  [
+            'current_menu' => 'properties',
+            'properties'   => $properties,
+            'form' => $form->createView()
+        ]);
     }
-	
+
 	/**
      * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
 	 * @return Response
