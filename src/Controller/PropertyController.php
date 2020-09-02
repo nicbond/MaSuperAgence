@@ -14,16 +14,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PropertyController extends AbstractController
 {
-	/**
+    /**
      * @var PropertyRepository
     */
-	private $repository;
-	
-	public function __construct(PropertyRepository $repository)
-	{
-		$this->repository = $repository;
-	}
-	
+    private $repository;
+
+    public function __construct(PropertyRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * @Route("/biens", name="property.index")
      * @param Request $request
@@ -42,24 +42,24 @@ class PropertyController extends AbstractController
             12
         );
 
-        return $this->render('property/index.html.twig',  [
+        return $this->render('property/index.html.twig', [
             'current_menu' => 'properties',
             'properties'   => $properties,
             'form' => $form->createView()
         ]);
     }
 
-	/**
+    /**
      * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
-	 * @return Response
+     * @return Response
      */
-	public function show($slug, $id): Response
+    public function show($slug, $id): Response
     {
-		$property = $this->repository->find($id);
-		
-		return $this->render('property/show.html.twig',  [
-			'property' => $property,
-			'current_menu' => 'properties'
-			]);
+        $property = $this->repository->find($id);
+        
+        return $this->render('property/show.html.twig', [
+            'property' => $property,
+            'current_menu' => 'properties'
+            ]);
     }
 }
