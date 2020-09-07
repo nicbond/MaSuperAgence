@@ -8,14 +8,14 @@ use App\Repository\PropertyRepository;
 
 class HomeController extends AbstractController
 {
-	/**
+    /**
      * @param PropertyRepository $repository
-	 * @return Response
+     * @return Response
      */
     public function index(PropertyRepository $repository): Response
     {
-		$properties = $repository->findLatest();
-		return $this->render('pages/home.html.twig', [
-			'properties' => $properties]);
+        $properties = $repository->findLatest();
+        return $this->render('pages/home.html.twig', [
+            'properties' => $properties]);
     }
 }
