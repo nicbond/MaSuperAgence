@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,28 +15,28 @@ use Cocur\Slugify\Slugify;
  */
 class Property
 {
-	const HEAT = [
-		0 => 'Electrique',
-		1 => 'Gaz'
-	];
-	
+    const HEAT = [
+        0 => 'Electrique',
+        1 => 'Gaz'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
-	
-	/**
+
+    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=5, max=255)
      */
-	private $title;
-	
-	/**
+    private $title;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
-	private $description;
+    private $description;
 
     /**
      * @ORM\Column(type="integer")
@@ -69,19 +71,19 @@ class Property
 
     /**
      * @ORM\Column(type="string", length=255)
-	 * @Assert\NotBlank
+     * @Assert\NotBlank
      */
     private $city;
-	
-	/**
+
+    /**
      * @ORM\Column(type="string", length=255)
-	 * @Assert\NotBlank
+     * @Assert\NotBlank
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
-	 * @Assert\Regex("/^[0-9]{5}$/")
+     * @Assert\Regex("/^[0-9]{5}$/")
      */
     private $postal_code;
 
@@ -94,46 +96,52 @@ class Property
      * @ORM\Column(type="datetime")
      */
     private $created_at;
-	
-	public function __construct()
-	{
-		$this->created_at = new \DateTime();
-		$this->sold = false;
-	}
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Option::class, mappedBy="properties")
+     */
+    private $options;
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTime();
+        $this->sold = false;
+        $this->options = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
-	
+
     public function getTitle(): ?string
     {
         return $this->title;
     }
-	
-	public function setTitle(string $title): self
-	{
-		$this->title = $title;
-		
-		return $this;
-	}
-	
-	public function getSlug(): ?string
-    {
-		return (new Slugify())->slugify($this->title);
-    }
-	
-	public function getDescription(): ?string
-	{
-		return $this->description;
-	}
-	
-	public function setDescription(string $description): self
-	{
-		$this->description = $description;
 
-		return $this;
-	}
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+                             
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return (new Slugify())->slugify($this->title);
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+                     
+        return $this;
+    }
 
     public function getSurface(): ?int
     {
@@ -194,8 +202,8 @@ class Property
 
         return $this;
     }
-	
-	public function getFormattedPrice(): ?string
+    
+    public function getFormattedPrice(): ?string
     {
         return number_format($this->price, 0, '', ' ');
     }
@@ -211,12 +219,11 @@ class Property
 
         return $this;
     }
-	
-	public function getHeatType(): string
-    {
-		return self::HEAT[$this->heat];
-    }
 
+    public function getHeatType(): string
+    {
+        return self::HEAT[$this->heat];
+    }
 
     public function getCity(): ?string
     {
@@ -229,8 +236,8 @@ class Property
 
         return $this;
     }
-	
-	public function getAddress(): ?string
+
+    public function getAddress(): ?string
     {
         return $this->address;
     }
@@ -274,6 +281,34 @@ class Property
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Option[]
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    public function addOption(Option $option): self
+    {
+        if (!$this->options->contains($option)) {
+            $this->options[] = $option;
+            $option->addProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOption(Option $option): self
+    {
+        if ($this->options->contains($option)) {
+            $this->options->removeElement($option);
+            $option->removeProperty($this);
+        }
 
         return $this;
     }
