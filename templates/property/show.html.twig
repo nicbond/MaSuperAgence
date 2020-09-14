@@ -49,9 +49,18 @@
 					</tr>
 				</table>
 			</div>
-			<div class="col-md-4">
-			<h2>Spécificités</h2>
-			</div>
+            <div class="col-md-4">
+            <h2>Spécificités</h2>
+            <table class="table table-striped">
+                {% if not property.options.empty  %}
+                    {% for option in property.options %}
+                        <tr>
+                            <td>{{ option.name }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </table>
+            </div>
 		</div>
 	</div>
 {% endblock %}
