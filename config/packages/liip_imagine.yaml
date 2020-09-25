@@ -1,0 +1,8 @@
+liip_imagine:
+    filter_sets:
+        thumb:
+            quality: 75
+            filters:
+                thumbnail  : { size : [340, 130], mode : outbound }
+    # valid drivers options include "gd" or "gmagick" or "imagick"
+    driver: "gd"
