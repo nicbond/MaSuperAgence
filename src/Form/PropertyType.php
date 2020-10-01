@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PropertyType extends AbstractType
 {
@@ -30,6 +31,10 @@ class PropertyType extends AbstractType
                 'choice_label' => 'name',
                 'multiple' => true,
                 'expanded' => true
+            ])
+            ->add('imageFile', FileType::class, [
+                'required' => false,
+                'label_attr' => [ 'data-browse' => 'Parcourir' ]
             ])
             ->add('city')
             ->add('address')
