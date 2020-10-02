@@ -3,56 +3,56 @@
 {% block title %}{{ property.title }}{% endblock %}
 
 {% block body %}
-	<div class="jumbotron">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-			{% if property.filename %}
-                <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height:auto">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+            {% if property.filename %}
+                <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height:auto">
             {% else %}
-                <img src="{{'images/properties/empty.jpg' | imagine_filter('thumb') }}" alt="card-img-top" style="width: 100%; height:auto">
+                <img src="{{'images/properties/empty.jpg' | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height:auto">
             {% endif %}
-				</div>
-				<div class="col-md-4">
-					<h1>{{ property.title }}</h1>
-					<h2>{{ property.rooms }} pièces - {{ property.surface }} m²</h2>
-					<div class="text-primary" style="font-weight: bold;font-size: 4rem;">{{ property.formattedPrice }} €</div>
-					<a href="#" class="btn btn-primary">Contacter l'agence</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container mt-4">
+                </div>
+                <div class="col-md-4">
+                    <h1>{{ property.title }}</h1>
+                    <h2>{{ property.rooms }} pièces - {{ property.surface }} m²</h2>
+                    <div class="text-primary" style="font-weight: bold;font-size: 4rem;">{{ property.formattedPrice }} €</div>
+                    <a href="#" class="btn btn-primary">Contacter l'agence</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
 
-		<p>
-			{{ property.description | nl2br}}
-		</p>
-		<div class="row">
-			<div class="col-md-8">
-				<h2>Caractéristiques</h2>
-				<table class="table table-striped">
-					<tr>
-						<td>Surface habitable</td>
-						<td>{{ property.surface }} m²</td>
-					</tr>
-					<tr>
-						<td>Pièces</td>
-						<td>{{ property.rooms }}</td>
-					</tr>
-					<tr>
-						<td>Chambres</td>
-						<td>{{ property.bedrooms }}</td>
-					</tr>
-					<tr>
-						<td>Etage</td>
-						<td>{{ property.floor }}</td>
-					</tr>
-					<tr>
-						<td>Chauffage</td>
-						<td>{{ property.heatType }}</td>
-					</tr>
-				</table>
-			</div>
+        <p>
+            {{ property.description | nl2br}}
+        </p>
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Caractéristiques</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Surface habitable</td>
+                        <td>{{ property.surface }} m²</td>
+                    </tr>
+                    <tr>
+                        <td>Pièces</td>
+                        <td>{{ property.rooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chambres</td>
+                        <td>{{ property.bedrooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Etage</td>
+                        <td>{{ property.floor }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chauffage</td>
+                        <td>{{ property.heatType }}</td>
+                    </tr>
+                </table>
+            </div>
             <div class="col-md-4">
             <h2>Spécificités</h2>
             <table class="table table-striped">
@@ -65,7 +65,7 @@
                 {% endif %}
             </table>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 {% endblock %}
 
