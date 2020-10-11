@@ -1,6 +1,6 @@
 Développement d'un site web pour une agence immobilière ainsi que de son back-office.
 
-Stack technique: PHP 7.4.7 / Symfony 4.4.10 (version LTS)
+Stack technique: PHP 7.4.7 / Symfony 4.4.13 (version LTS)
 
 Le site web comprend:
  - un système de pagination
