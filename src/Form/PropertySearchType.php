@@ -35,8 +35,7 @@ class PropertySearchType extends AbstractType
                 'label' => false,
                 'class'    => Option::class,
                 'choice_label' => 'name',
-                'multiple' => true,
-                'expanded' => true
+                'multiple' => true
             ])
         ;
     }
