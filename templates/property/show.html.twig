@@ -14,7 +14,7 @@
 
       {% if not form.vars.valid %}
         <div class="alert alert-danger">
-          Erreur je ne sais pas quoi
+          Erreur du formulaire
         </div>
       {% endif %}
 
@@ -30,8 +30,8 @@
                     <h1>{{ property.title }}</h1>
                     <h2>{{ property.rooms }} pièces - {{ property.surface }} m²</h2>
                     <div class="text-primary" style="font-weight: bold;font-size: 4rem;">{{ property.formattedPrice }} €</div>
-                    <a href="#" class="btn btn-primary">Contacter l'agence</a>
-                    <div id="contactForm" class="mt-4">
+                    <a href="#" class="btn btn-primary" id="contactButton"{% if form.vars.submitted %} style="display: none;"{% endif %}>Contacter l'agence</a>
+                    <div id="contactForm" class="mt-4"{% if not form.vars.submitted %} style="display: none;"{% endif %}>
                     {{ form_start(form) }}
                     <div class="row">
                         <div class="col">{{ form_row(form.lastname) }}</div>
