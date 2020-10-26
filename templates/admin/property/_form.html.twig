@@ -1,3 +1,14 @@
+      {% for picture in property.pictures %}
+        <div class="col" style="width: 100px; flex: none; margin: 5px;">
+          <img src="{{ vich_uploader_asset(picture, 'imageFile') | imagine_filter('thumb') }}" width="100" alt="">
+              <form method="post" action="{{ path('admin.picture.delete', {'id': picture.id}) }}" style="display: inline-block" 
+              onsubmit="return confirm('Etes vous vraiment sûr?')">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ picture.id) }}">
+              <button class="btn btn-danger">Supprimer</button>
+              </form>
+        </div>
+      {% endfor %}
 {{ form_start(form) }}
 <div class="row">
   <div class="col-md-8">
@@ -9,11 +20,6 @@
   </div>
   <div class="col-md-4">
     <div class="row flex justify-content-start flex-wrap">
-      {% for picture in property.pictures %}
-        <div class="col" style="width: 100px; flex: none; margin: 5px;">
-          <img src="{{ vich_uploader_asset(picture, 'imageFile') | imagine_filter('thumb') }}" width="100" alt="">
-        </div>
-      {% endfor %}
     </div>
   </div>
 </div>
