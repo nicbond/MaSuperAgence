@@ -28,12 +28,14 @@ class PropertyType extends AbstractType
             ])
             ->add('options', EntityType::class, [
                 'class'    => Option::class,
+                'required' => false,
                 'choice_label' => 'name',
                 'multiple' => true
             ])
-            ->add('imageFile', FileType::class, [
+            ->add('pictureFiles', FileType::class, [
                 'required' => false,
-                'label_attr' => [ 'data-browse' => 'Parcourir' ]
+                'label_attr' => [ 'data-browse' => 'Parcourir' ],
+                'multiple' => true
             ])
             ->add('city')
             ->add('address')

@@ -4,7 +4,7 @@ namespace App\Listener;
 use Vich\UploaderBundle\Event\Event;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
-use App\Entity\Property;
+use App\Entity\Picture;
 
 class ImageUploadListener
 {
@@ -28,7 +28,7 @@ class ImageUploadListener
     {
         $entity = $event->getObject();
 
-        if(!$entity instanceof Property) {
+        if(!$entity instanceof Picture) {
             return;
         }
 

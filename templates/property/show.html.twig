@@ -18,14 +18,18 @@
         </div>
       {% endif %}
 
-            <div class="row">
-                <div class="col-md-8">
-            {% if property.filename %}
-                <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height:auto">
-            {% else %}
-                <img src="{{'images/properties/empty.jpg' | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height:auto">
-            {% endif %}
+        <div class="row">
+            <div class="col-md-8">
+                <div data-slider>
+                    {% if property.pictures is empty %}
+                        <img src="{{ '/images/properties/empty.jpg' | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height:auto;">
+                    {% else %}
+                    {% for picture in property.pictures %}
+                        <img src="{{ vich_uploader_asset(picture, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width: 100%; height:auto;">
+                    {% endfor %}
+                    {% endif %}
                 </div>
+            </div>
                 <div class="col-md-4">
                     <h1>{{ property.title }}</h1>
                     <h2>{{ property.rooms }} pièces - {{ property.surface }} m²</h2>
