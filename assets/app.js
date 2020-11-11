@@ -1,5 +1,8 @@
 import Places from 'places.js'
 import Map from './modules/map'
+import 'slick-carousel'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 Map.init()
 
@@ -17,6 +20,7 @@ if (inputAddress !== null) {
   })
 }
 
+//Algolia Places pour le front
 let searchAddress = document.querySelector('#search_address')
 if (searchAddress !== null) {
   let place = Places({
@@ -28,10 +32,15 @@ if (searchAddress !== null) {
   })
 }
 
-
 let $ = require('jquery')
 import './styles/app.css';
 require('select2')
+
+//Utilisation d'un carrousel pour les images
+$('[data-slider]').slick({
+  dots: true,
+  arrows: true
+})
 
 // Select2 pour le champ options dans les formulaires + SlideDown /SlideUp pour le #contactButton & #contactForm
 $('select').select2()
