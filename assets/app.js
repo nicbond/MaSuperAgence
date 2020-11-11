@@ -1,5 +1,9 @@
 import Places from 'places.js'
+import Map from './modules/map'
 
+Map.init()
+
+//Permet l'auto-complétion avec Algolia Places sur le champ adresse
 let inputAddress = document.querySelector('#property_address')
 if (inputAddress !== null) {
   let place = Places({
@@ -13,11 +17,23 @@ if (inputAddress !== null) {
   })
 }
 
+let searchAddress = document.querySelector('#search_address')
+if (searchAddress !== null) {
+  let place = Places({
+    container: searchAddress
+  })
+  place.on('change', e => {
+    document.querySelector('#lat').value = e.suggestion.latlng.lat
+    document.querySelector('#lng').value = e.suggestion.latlng.lng
+  })
+}
+
 
 let $ = require('jquery')
 import './styles/app.css';
 require('select2')
 
+// Select2 pour le champ options dans les formulaires + SlideDown /SlideUp pour le #contactButton & #contactForm
 $('select').select2()
 let $contactButton = $('#contactButton')
 $contactButton.click(e => {
@@ -26,7 +42,7 @@ $contactButton.click(e => {
   $contactButton.slideUp();
 })
 
-// Suppression des éléments
+// Suppression des images pour la partie back-office
 document.querySelectorAll('[data-delete]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault()
