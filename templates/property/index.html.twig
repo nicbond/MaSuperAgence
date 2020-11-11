@@ -3,42 +3,48 @@
 {% block title %}Tous nos biens{% endblock %}
 
 {% block body %}
-	<div class="jumbotron">
-		<div class="container">
-			{{ form_start(form) }}
-				<div class="form-row align-items-end">
-					<div class="col">
-						{{ form_row(form.minSurface) }}
-					</div>
-					<div class="col">
-						{{ form_row(form.maxPrice) }}
-					</div>
-					<div class="col">
-						{{ form_row(form.options) }}
-					</div>
-					<div class="col">
-						<div class="form-group">
-							<button class="btn btn-primary">Rechercher</button>
-						</div>
-					</div>
-				</div>
-			{{ form_end(form) }}
-		</div>
-	</div>
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+                <div class="form-row align-items-end">
+                    <div class="col">
+                        {{ form_row(form.minSurface) }}
+                    </div>
+                    <div class="col">
+                        {{ form_row(form.maxPrice) }}
+                    </div>
+                    <div class="col">
+                        {{ form_row(form.options) }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ form_row(form.address, {id: 'search_address'}) }}
+                    </div>
+                    <div class="col">
+                        {{ form_row(form.distance) }}
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <button class="btn btn-primary">Rechercher</button>
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
 
-	<div class="container mt-4">
-		<h1>Voir tous nos bien</h1>
-		</br>
-			<div class="row">
-				{% for property in properties %}
-					<div class="col-md-4">
-						{% include 'property/_property.html.twig' %}
-					</div>
-				{% endfor %}
-			</div>
+    <div class="container mt-4">
+        <h1>Voir tous nos bien</h1>
+        </br>
+            <div class="row">
+                {% for property in properties %}
+                    <div class="col-md-4">
+                        {% include 'property/_property.html.twig' %}
+                    </div>
+                {% endfor %}
+            </div>
 
-			<div class="navigation">
-				{{ knp_pagination_render(properties) }}
-			</div>
-	</div>
+            <div class="navigation">
+                {{ knp_pagination_render(properties) }}
+            </div>
+    </div>
 {% endblock %}

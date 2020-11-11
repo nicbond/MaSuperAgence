@@ -16,3 +16,10 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+        dql:
+            numeric_functions:
+                ASIN: DoctrineExtensions\Query\Mysql\Asin
+                POWER: DoctrineExtensions\Query\Mysql\Power
+                SIN: DoctrineExtensions\Query\Mysql\Sin
+                PI: DoctrineExtensions\Query\Mysql\Pi
+                COS: DoctrineExtensions\Query\Mysql\Cos
