@@ -108,7 +108,7 @@ class Property
     private $updated_at;
 
     /**
-     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="property", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Picture::class, mappedBy="property", orphanRemoval=true, cascade={"persist"}, fetch="EAGER")
      */
     private $pictures;
 
