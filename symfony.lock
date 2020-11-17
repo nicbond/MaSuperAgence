@@ -604,6 +604,9 @@
     "symfony/yaml": {
         "version": "v4.4.10"
     },
+    "twig/cache-extension": {
+        "version": "v1.5.0"
+    },
     "twig/extra-bundle": {
         "version": "v3.0.3"
     },
