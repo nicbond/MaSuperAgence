@@ -29,3 +29,13 @@ services:
     App\Listener\ImageUploadListener:
         tags:
         - { name: kernel.event_listener, event: vich_uploader.pre_remove, method: onVichUploaderPreRemove}
+
+    Twig\CacheExtension\CacheProviderInterface:
+        class: Twig\CacheExtension\CacheProvider\PsrCacheAdapter
+
+    Twig\CacheExtension\CacheStrategyInterface:
+        class: Twig\CacheExtension\CacheStrategy\LifetimeCacheStrategy
+
+    Twig\CacheExtension\Extension:
+        tags:
+        - { name: twig.extension }

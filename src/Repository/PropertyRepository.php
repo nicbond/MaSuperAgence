@@ -77,6 +77,8 @@ class PropertyRepository extends ServiceEntityRepository
     private function findVisibleQuery(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
+            /*->select('p', 'pics')
+            ->leftJoin('p.pictures', 'pics')*/
             ->Where('p.sold = :val')
             ->setParameter('val', false);
     }
