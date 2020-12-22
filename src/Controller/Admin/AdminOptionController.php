@@ -21,7 +21,8 @@ class AdminOptionController extends AbstractController
     public function index(OptionRepository $optionRepository): Response
     {
         return $this->render('admin/option/index.html.twig', [
-            'options' => $optionRepository->findAll(),
+            'current_options' => 'options',
+            'options' => $optionRepository->findAll()
         ]);
     }
 
