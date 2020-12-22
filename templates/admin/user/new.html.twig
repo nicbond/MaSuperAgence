@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un nouvel administrateur{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Créer un nouvel administrateur</h1>
+            {{ include('admin/user/_form.html.twig', {form: form, button: 'Créer'}) }}
+    </div>
+{% endblock %}
