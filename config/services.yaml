@@ -39,3 +39,14 @@ services:
     Twig\CacheExtension\Extension:
         tags:
         - { name: twig.extension }
+
+    app.menu_builder:
+        class: App\Menu\Builder
+        arguments: ["@knp_menu.factory"]
+
+    app.main_menu:
+        class: Knp\Menu\MenuItem
+        factory: ["@app.menu_builder", MyMenu]
+        arguments: ["@request_stack"]
+        tags:
+            - { name: knp_menu.menu, alias: navigator }

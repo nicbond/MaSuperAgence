@@ -18,5 +18,13 @@ L'administrateur, une fois connecté, pourra réaliser les actions suivantes:
  - créer un nouveau bien
  - éditer un bien
  - supprimer un bien (avec une sécurité demandant la confirmation de la suppression)
+ 
 Il en sera également de même concernant la gestion administrateur ainsi que de celle permettant de gérer les options.
 Des messages flash permettront d'indiquer le bon déroulement de ces différentes actions.
+
+URLs:
+ - Homepage: http://localhost:8000/
+ - Acheter: http://localhost:8000/biens
+ - administration des biens (après s'être logué): http://localhost:8000/admin
+ - administration des utilisateurs: http://localhost:8000/admin/users
+ - administration des options: http://localhost:8000/admin/option/

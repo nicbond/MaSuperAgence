@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    {{ knp_menu_render('navigator') }}
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -37,6 +38,18 @@
         <li class="nav-item">
             <a class="nav-link {% if current_options is defined and current_options == 'options' %}active{% endif %}" 
             href="{{ path('admin.option.index') }}">Gérer les options</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Administration
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ path('admin.user.index') }}">Gestion des administrateurs</a>
+                <a class="dropdown-item" href="{{ path('admin.property.index') }}">Gestion des biens</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{ path('admin.option.index') }}">Gestion des options</a>
+            </div>
         </li>
         {% endif %}
     {% endif %}
