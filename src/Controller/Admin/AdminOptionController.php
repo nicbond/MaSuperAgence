@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/admin/option")
@@ -18,35 +19,47 @@ class AdminOptionController extends AbstractController
     /**
      * @Route("/", name="admin.option.index", methods={"GET"})
      */
-    public function index(OptionRepository $optionRepository): Response
+    public function index(OptionRepository $optionRepository, UserInterface $user): Response
     {
-        return $this->render('admin/option/index.html.twig', [
-            'current_options' => 'options',
-            'options' => $optionRepository->findAll()
-        ]);
+        $bool = self::ControlRights($user);
+
+        if ($bool == false) {
+            return $this->render('admin/role.html.twig');
+        } else {
+            return $this->render('admin/option/index.html.twig', [
+                'current_options' => 'options',
+                'options' => $optionRepository->findAll()
+            ]);
+        }
     }
 
     /**
      * @Route("/new", name="admin.option.new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserInterface $user): Response
     {
-        $option = new Option();
-        $form = $this->createForm(OptionType::class, $option);
-        $form->handleRequest($request);
+        $bool = self::ControlRights($user);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($option);
-            $entityManager->flush();
+        if ($bool == false) {
+            return $this->render('admin/role.html.twig');
+        } else {
+            $option = new Option();
+            $form = $this->createForm(OptionType::class, $option);
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('admin.option.index');
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($option);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('admin.option.index');
+            }
+
+            return $this->render('admin/option/new.html.twig', [
+                'option' => $option,
+                'form' => $form->createView(),
+            ]);
         }
-
-        return $this->render('admin/option/new.html.twig', [
-            'option' => $option,
-            'form' => $form->createView(),
-        ]);
     }
 
     /**
@@ -81,5 +94,15 @@ class AdminOptionController extends AbstractController
         }
 
         return $this->redirectToRoute('admin.option.index');
+    }
+
+    private function ControlRights($user)
+    {
+        if ($user->getUsername() != 'nicolas') {
+            $response = false;
+        } else {
+            $response = true;
+        }
+        return $response;
     }
 }
