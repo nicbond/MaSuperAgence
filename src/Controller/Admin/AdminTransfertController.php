@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,6 +30,14 @@ class AdminTransfertController extends AbstractController
                 if ($form->get('validate')->isClicked()) {
                 }
             }
+        }
+
+        if ($request->get('year') && $request->get('month')) {
+            $year = $request->get('year');
+            $month = $request->get('month');
+            $today = '01'.'/'.$request->get('month').'/'.$request->get('year');
+        } else {
+            $today = new \DateTime('now');
         }
 
         return $this->render('admin/transfert/index.html.twig', array(
@@ -68,5 +75,15 @@ class AdminTransfertController extends AbstractController
               ))
         ->add('validate', SubmitType::class, array('label'=>'Valider', 'attr' => array('class' => 'btn btn-success btn-block')))
         ->getForm();
+    }
+
+    /**
+     * @Route("/admin/transfert/{year}-{month}", name="admin.transfert.date")
+     * @param Request $request
+     * @return Symfony\Component\HttpFoundation\Response
+     */
+    public function changeDate(Request $request): Response
+    {
+        return $this->index($request);
     }
 }
