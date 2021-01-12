@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les virements{% endblock %}
+
+{% block body %}
+
+    {{ "\n"|nl2br }}
+
+    <div class="row" style="margin-left:20px;">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="padding: 5px 10px;background: #f5f5f5;text-align:center;">Effectuer un virement SEPA</div>
+
+                <div class="panel-body" style="background: #f5f5f5;">
+                    {{ form_start(transfertForm) }}
+                    <div class="row" style="margin-bottom:20px;">
+                        <div class="col-md-6">
+                            {{ form_widget(transfertForm.option) }}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group"> 
+                                {{ form_widget(transfertForm.value) }}
+                                <span class="input-group-text">€</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class=" col-md-6">
+                            <div class="input-group"> 
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar" aria-hidden="true" style="font-size: 18px;"></i></span>
+                                {{ form_widget(transfertForm.date) }} 
+                            </div>
+                        </div>
+                        <div class=" col-md-6">
+                            {{ form_widget(transfertForm.validate) }}
+                        </div>
+                    </div>
+                    {{ form_end(transfertForm) }}
+                </div>
+            {{ "\n"|nl2br }}
+            <div class="row" style="margin-left:1px;">
+                <a href="#""" class="btn btn-success btn-inline" style="width:120px;">Excel</a>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

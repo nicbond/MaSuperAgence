@@ -51,6 +51,15 @@
                 <a class="dropdown-item" href="{{ path('admin.option.index') }}">Gestion des options</a>
             </div>
         </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Comptabilité
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ path('admin.transfert.index') }}">Gestion des virements</a>
+            </div>
+        </li>
         {% endif %}
     {% endif %}
 
