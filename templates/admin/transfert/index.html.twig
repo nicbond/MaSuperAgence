@@ -6,6 +6,20 @@
 
     {{ "\n"|nl2br }}
 
+    <div class="row">
+        <div class=" col-md-8">
+            <h3>
+                <a href="{{ period.lastMonth.url }}"><- {{ period.lastMonth.text }}</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ period.month }}/{{ period.year }}
+                {% if period.nextMonth != null %}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ period.nextMonth.url }}">{{ period.nextMonth.text }} -></a>
+                {% endif %}
+            </h3>
+        </div>
+    </div>
+
+    {{ "\n"|nl2br }}
+
     <div class="row" style="margin-left:20px;">
         <div class="col-md-3">
             <div class="panel panel-default">

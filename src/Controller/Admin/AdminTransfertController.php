@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,7 @@ class AdminTransfertController extends AbstractController
      * @param Request $request
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function index(Request $request): Response
+    public function index(Request $request,  UserInterface $user): Response
     {
         if ($request->getMethod() == 'POST') {
             $form = $this->getTransfertForm();
@@ -36,12 +37,15 @@ class AdminTransfertController extends AbstractController
             $year = $request->get('year');
             $month = $request->get('month');
             $today = '01'.'/'.$request->get('month').'/'.$request->get('year');
+            $this->setPeriod($today);
         } else {
             $today = new \DateTime('now');
+            $this->setPeriod($today->format('d/m/Y'));
         }
 
         return $this->render('admin/transfert/index.html.twig', array(
-            'transfertForm'   => $this->getTransfertForm()->createView()
+            'transfertForm'   => $this->getTransfertForm()->createView(),
+            'period'          => $this->getPeriod()
         ));
     }
 
@@ -80,10 +84,47 @@ class AdminTransfertController extends AbstractController
     /**
      * @Route("/admin/transfert/{year}-{month}", name="admin.transfert.date")
      * @param Request $request
+     * @param UserInterface $user
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function changeDate(Request $request): Response
+    public function changeDate(Request $request, UserInterface $user): Response
     {
-        return $this->index($request);
+        return $this->index($request, $user);
+    }
+
+    public function setPeriod(string $period): Void
+    {
+        $this->get('session')->set('date', $period);
+    }
+
+    /**
+     * @return $periods
+     */
+    public function getPeriod()
+    {
+        $data = new \stdClass();
+        if ($this->get('session')->get('date', 'notSet') == 'notSet') {
+            return $data;
+        }
+        $period = \DateTime::createFromFormat('d/m/Y', $this->get('session')->get('date'));
+
+        $data->month = $period->format('m');
+        $data->year  = $period->format('Y');
+
+        if (date('Y') == $data->year && date('m') == $data->month) {
+            $data->nextMonth = null;
+            $period->modify('+1 month');
+        } else {
+            $data->nextMonth = array(
+              'url' => $this->generateUrl('admin.transfert.date', array('year'=> $period->modify('+1 month')->format('Y'),'month'=> $period->format('m'))),
+              'text' => $period->format('m').'/'.$period->format('Y')
+            );
+        }
+        $data->lastMonth = array(
+            'url' => $this->generateUrl('admin.transfert.date', array('year'=> $period->modify('-2 month')->format('Y'),'month'=> $period->format('m'))),
+            'text' => $period->format('m').'/'.$period->format('Y')
+        );
+
+        return $data;
     }
 }
