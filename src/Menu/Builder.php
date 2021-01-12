@@ -36,16 +36,16 @@ class Builder
         $menu['Administration']->addChild('Ajouter', array('route' => 'admin.user.index'));
         $menu['Administration']['Ajouter']->setAttribute('icon', 'menu-icon fa fa-caret-right');
  
-    $menu->addChild('Pages', array('uri' => '#'));
-        $menu['Pages']->setAttribute('icon', 'menu-icon fa fa-tachometer');
-        $menu['Pages']->setAttribute('arrow', 'fa fa-angle-down');
-        $menu['Pages']->setAttribute('span', 'menu-text');
-        $menu['Pages']->setLinkAttribute('class', 'dropdown-toggle');
-        $menu['Pages']->setChildrenAttribute('class', 'submenu');
-        $menu['Pages']->addChild('Pages', array('route' => 'admin.user.index'));
-            $menu['Pages']['Pages']->setAttribute('icon', 'menu-icon fa fa-caret-right');
-        $menu['Pages']->addChild('Ajouter', array('route' => 'admin.user.index'));
-            $menu['Pages']['Ajouter']->setAttribute('icon', 'menu-icon fa fa-caret-right');
+    $menu->addChild('Sport', array('uri' => '#'));
+        $menu['Sport']->setAttribute('icon', 'menu-icon fa fa-tachometer');
+        $menu['Sport']->setAttribute('arrow', 'fa fa-angle-down');
+        $menu['Sport']->setAttribute('span', 'menu-text');
+        $menu['Sport']->setLinkAttribute('class', 'dropdown-toggle');
+        $menu['Sport']->setChildrenAttribute('class', 'submenu');
+        $menu['Sport']->addChild('Football', array('uri' => 'https://www.eurosport.fr/football/'));
+            $menu['Sport']['Football']->setAttribute('icon', 'menu-icon fa fa-caret-right');
+        $menu['Sport']->addChild('Tennis', array('uri' => 'https://www.eurosport.fr/tennis/'));
+            $menu['Sport']['Tennis']->setAttribute('icon', 'menu-icon fa fa-caret-right');
  
     $menu->addChild('Médias', array('uri' => '#'));
         $menu['Médias']->setAttribute('icon', 'menu-icon fa fa-tachometer');
@@ -53,8 +53,8 @@ class Builder
         $menu['Médias']->setAttribute('span', 'menu-text');
         $menu['Médias']->setLinkAttribute('class', 'dropdown-toggle');
         $menu['Médias']->setChildrenAttribute('class', 'submenu');
-        $menu['Médias']->addChild('Médias', array('route' => 'admin.user.index'));
-            $menu['Médias']['Médias']->setAttribute('icon', 'menu-icon fa fa-caret-right');
+        $menu['Médias']->addChild('Cinéma', array('uri' => 'https://www.allocine.fr/'));
+            $menu['Médias']['Cinéma']->setAttribute('icon', 'menu-icon fa fa-caret-right');
         $menu['Médias']->addChild('Ajouter', array('route' => 'admin.user.index'));
             $menu['Médias']['Ajouter']->setAttribute('icon', 'menu-icon fa fa-caret-right');
  
