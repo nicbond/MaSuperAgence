@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'fr'
+    file: '%kernel.root_dir%/../doc/XSD/SCT/pain.001.001.03.xsd'
+    upload: '%kernel.root_dir%/../compta/'
 
 services:
     # default configuration for services in *this* file
