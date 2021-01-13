@@ -28,3 +28,6 @@ URLs:
  - administration des biens (après s'être logué): http://localhost:8000/admin
  - administration des utilisateurs: http://localhost:8000/admin/users
  - administration des options: http://localhost:8000/admin/option/
+
+Pour le téléchargement du pain, celui-ci est disponible à cette adresse:
+ - https://www.isabel.eu/knowledge_base_ibs6/fr/03_client_solutions/04_ebanking/02_transactions/01_creating_transactions/isabel-6-supported-banking-file-formats.html
