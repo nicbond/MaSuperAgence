@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.02">
+<FIToFICstmrCdtTrf>
+<GrpHdr>
+<MsgId>000191832431857</MsgId>
+<CreDtTm>2021-01-22T08:00:59</CreDtTm>
+<NbOfTxs>2</NbOfTxs>
+<TtlIntrBkSttlmAmt Ccy="EUR">797.64</TtlIntrBkSttlmAmt>
+<IntrBkSttlmDt>2021-01-22</IntrBkSttlmDt>
+<SttlmInf>
+<SttlmMtd>CLRG</SttlmMtd>
+</SttlmInf>
+<InstdAgt>
+<FinInstnId>
+<BIC>PAOTFRP1XXX</BIC>
+</FinInstnId>
+</InstdAgt>
+</GrpHdr>
+<CdtTrfTxInf>
+<PmtId>
+<EndToEndId>NOTPROVIDED</EndToEndId>
+<TxId>1920332002420818</TxId>
+</PmtId>
+<PmtTpInf>
+<SvcLvl>
+<Cd>SEPA</Cd>
+</SvcLvl>
+</PmtTpInf>
+<IntrBkSttlmAmt Ccy="EUR">650</IntrBkSttlmAmt>
+<ChrgBr>SLEV</ChrgBr>
+<InstgAgt>
+<FinInstnId>
+<BIC>CMBRFR2BARK</BIC>
+</FinInstnId>
+</InstgAgt>
+<Dbtr>
+<Nm>MR TOTO</Nm>
+<PstlAdr>
+<Ctry>IT</Ctry>
+<AdrLine>VIA VENERE 1/41 33074 FONTANAFREDDA PN</AdrLine>
+</PstlAdr>
+</Dbtr>
+<DbtrAcct>
+<Id>
+<IBAN>FR88I0765000010286419320112</IBAN>
+</Id>
+</DbtrAcct>
+<DbtrAgt>
+<FinInstnId>
+<BIC>BPPIITRR</BIC>
+</FinInstnId>
+</DbtrAgt>
+<CdtrAgt>
+<FinInstnId>
+<BIC>PAETFRP1XXX</BIC>
+</FinInstnId>
+</CdtrAgt>
+<Cdtr>
+<Nm>JAMES BOND</Nm>
+</Cdtr>
+<CdtrAcct>
+<Id>
+<IBAN>FR7616408000010000976089254</IBAN>
+</Id>
+</CdtrAcct>
+</CdtTrfTxInf>
+<CdtTrfTxInf>
+<PmtId>
+<EndToEndId>ZZ15QS7GD02K5WOZZ</EndToEndId>
+<TxId>145332002540342</TxId>
+</PmtId>
+<PmtTpInf>
+<SvcLvl>
+<Cd>SEPA</Cd>
+</SvcLvl>
+</PmtTpInf>
+<IntrBkSttlmAmt Ccy="EUR">147.64</IntrBkSttlmAmt>
+<ChrgBr>SLEV</ChrgBr>
+<InstgAgt>
+<FinInstnId>
+<BIC>CMBRFR2BARK</BIC>
+</FinInstnId>
+</InstgAgt>
+<Dbtr>
+<Nm>BONNELLIER VIRGI</Nm>
+<PstlAdr>
+<Ctry>FR</Ctry>
+<AdrLine>68 AVENUE DES CHAMPS ELYSEES</AdrLine>
+<AdrLine>75008 PARIS</AdrLine>
+</PstlAdr>
+</Dbtr>
+<DbtrAcct>
+<Id>
+<IBAN>FR7630004000720000001784601</IBAN>
+</Id>
+</DbtrAcct>
+<DbtrAgt>
+<FinInstnId>
+<BIC>BNPAFRPP</BIC>
+</FinInstnId>
+</DbtrAgt>
+<CdtrAgt>
+<FinInstnId>
+<BIC>PAMPFRP1XXX</BIC>
+</FinInstnId>
+</CdtrAgt>
+<Cdtr>
+<Nm>MR JACKSON</Nm>
+<PstlAdr>
+<AdrLine>Paris 75008</AdrLine>
+</PstlAdr>
+</Cdtr>
+<CdtrAcct>
+<Id>
+<IBAN>FR7630004000720000001784601</IBAN>
+</Id>
+</CdtrAcct>
+<RmtInf>
+<Ustrd>Compte courant</Ustrd>
+</RmtInf>
+</CdtTrfTxInf>
+</FIToFICstmrCdtTrf>
+</Document>
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.02">
+<FIToFICstmrCdtTrf>
+<GrpHdr>
+<MsgId>000191832431857</MsgId>
+<CreDtTm>2021-01-22T08:00:59</CreDtTm>
+<NbOfTxs>3</NbOfTxs>
+<TtlIntrBkSttlmAmt Ccy="EUR">805.14</TtlIntrBkSttlmAmt>
+<IntrBkSttlmDt>2021-01-22</IntrBkSttlmDt>
+<SttlmInf>
+<SttlmMtd>CLRG</SttlmMtd>
+</SttlmInf>
+<InstdAgt>
+<FinInstnId>
+<BIC>PAOTFRP1XXX</BIC>
+</FinInstnId>
+</InstdAgt>
+</GrpHdr>
+<CdtTrfTxInf>
+<PmtId>
+<EndToEndId>NOTPROVIDED</EndToEndId>
+<TxId>1920332002420818</TxId>
+</PmtId>
+<PmtTpInf>
+<SvcLvl>
+<Cd>SEPA</Cd>
+</SvcLvl>
+</PmtTpInf>
+<IntrBkSttlmAmt Ccy="EUR">650</IntrBkSttlmAmt>
+<ChrgBr>SLEV</ChrgBr>
+<InstgAgt>
+<FinInstnId>
+<BIC>CMBRFR2BARK</BIC>
+</FinInstnId>
+</InstgAgt>
+<Dbtr>
+<Nm>MR TOTO</Nm>
+<PstlAdr>
+<Ctry>IT</Ctry>
+<AdrLine>VIA VENERE 1/41 33074 FONTANAFREDDA PN</AdrLine>
+</PstlAdr>
+</Dbtr>
+<DbtrAcct>
+<Id>
+<IBAN>FR88I0765000010286419320112</IBAN>
+</Id>
+</DbtrAcct>
+<DbtrAgt>
+<FinInstnId>
+<BIC>BPPIITRR</BIC>
+</FinInstnId>
+</DbtrAgt>
+<CdtrAgt>
+<FinInstnId>
+<BIC>PAETFRP1XXX</BIC>
+</FinInstnId>
+</CdtrAgt>
+<Cdtr>
+<Nm>JAMES BOND</Nm>
+</Cdtr>
+<CdtrAcct>
+<Id>
+<IBAN>FR7616408000010000976089254</IBAN>
+</Id>
+</CdtrAcct>
+</CdtTrfTxInf>
+<CdtTrfTxInf>
+<PmtId>
+<EndToEndId>ZZ15QS7GD02K5WOZZ</EndToEndId>
+<TxId>145332002540342</TxId>
+</PmtId>
+<PmtTpInf>
+<SvcLvl>
+<Cd>SEPA</Cd>
+</SvcLvl>
+</PmtTpInf>
+<IntrBkSttlmAmt Ccy="EUR">147.64</IntrBkSttlmAmt>
+<ChrgBr>SLEV</ChrgBr>
+<InstgAgt>
+<FinInstnId>
+<BIC>CMBRFR2BARK</BIC>
+</FinInstnId>
+</InstgAgt>
+<Dbtr>
+<Nm>BONNELLIER VIRGI</Nm>
+<PstlAdr>
+<Ctry>FR</Ctry>
+<AdrLine>68 AVENUE DES CHAMPS ELYSEES</AdrLine>
+<AdrLine>75008 PARIS</AdrLine>
+</PstlAdr>
+</Dbtr>
+<DbtrAcct>
+<Id>
+<IBAN>FR7630004000720000001784601</IBAN>
+</Id>
+</DbtrAcct>
+<DbtrAgt>
+<FinInstnId>
+<BIC>BNPAFRPP</BIC>
+</FinInstnId>
+</DbtrAgt>
+<CdtrAgt>
+<FinInstnId>
+<BIC>PAMPFRP1XXX</BIC>
+</FinInstnId>
+</CdtrAgt>
+<Cdtr>
+<Nm>MR JACKSON</Nm>
+<PstlAdr>
+<AdrLine>Paris 75008</AdrLine>
+</PstlAdr>
+</Cdtr>
+<CdtrAcct>
+<Id>
+<IBAN>FR7630004000720000001784601</IBAN>
+</Id>
+</CdtrAcct>
+<RmtInf>
+<Ustrd>Compte courant</Ustrd>
+</RmtInf>
+</CdtTrfTxInf>
+<CdtTrfTxInf>
+<PmtId>
+<EndToEndId>OWLQ900101111</EndToEndId>
+<TxId>1918332002580865</TxId>
+</PmtId>
+<PmtTpInf>
+<SvcLvl>
+<Cd>SEPA</Cd>
+</SvcLvl>
+</PmtTpInf>
+<IntrBkSttlmAmt Ccy="EUR">7.5</IntrBkSttlmAmt>
+<ChrgBr>SLEV</ChrgBr>
+<InstgAgt>
+<FinInstnId>
+<BIC>CMBRFR2BAkK</BIC>
+</FinInstnId>
+</InstgAgt>
+<Dbtr>
+<Nm>RBT</Nm>
+<PstlAdr>
+<Ctry>FR</Ctry>
+<AdrLine>68 avenue des champs elysees</AdrLine>
+<AdrLine>75008 Paris</AdrLine>
+</PstlAdr>
+</Dbtr>
+<DbtrAcct>
+<Id>
+<IBAN>FR7630004002740001621969060</IBAN>
+</Id>
+</DbtrAcct>
+<DbtrAgt>
+<FinInstnId>
+<BIC>BNPAFRTP</BIC>
+</FinInstnId>
+</DbtrAgt>
+<CdtrAgt>
+<FinInstnId>
+<BIC>PAOTFRPXXXX</BIC>
+</FinInstnId>
+</CdtrAgt>
+<Cdtr>
+<Nm>M ROTERDAM</Nm>
+</Cdtr>
+<CdtrAcct>
+<Id>
+<IBAN>FR7616408000010000771506028</IBAN>
+</Id>
+</CdtrAcct>
+<RmtInf>
+<Ustrd>Compte courant</Ustrd>
+</RmtInf>
+</CdtTrfTxInf>
+</FIToFICstmrCdtTrf>
+</Document>

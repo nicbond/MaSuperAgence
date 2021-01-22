@@ -7,6 +7,9 @@ parameters:
     locale: 'fr'
     file: '%kernel.root_dir%/../doc/XSD/SCT/pain.001.001.03.xsd'
     upload: '%kernel.root_dir%/../compta/'
+    listing: '%kernel.root_dir%/../public/'
+    split: '%kernel.root_dir%/../xml/pacs.008.se_1.xml'
+    treat: '%kernel.root_dir%/../'
 
 services:
     # default configuration for services in *this* file

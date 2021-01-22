@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use App\Notification\MailNotification;
 use Symfony\Component\HttpFoundation\Request;
 use App\Service\XmlWriter;
 use App\Entity\Option;
@@ -26,9 +27,11 @@ class AdminTransfertController extends AbstractController
     /**
      * @Route("/admin/transfert", name="admin.transfert.index")
      * @param Request $request
+     * @param UserInterface $user
+     * @param MailNotification $notification
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function index(Request $request,  UserInterface $user): Response
+    public function index(Request $request,  UserInterface $user, MailNotification $notification): Response
     {
         if ($request->getMethod() == 'POST') {
             $form = $this->getTransfertForm();
@@ -37,7 +40,7 @@ class AdminTransfertController extends AbstractController
 
             if ($form->isValid()) {
                 if ($form->get('validate')->isClicked()) {
-                    $this->generatePain($data, $user);
+                    $this->generatePain($data, $user, $notification);
                 }
             }
         }
@@ -94,11 +97,12 @@ class AdminTransfertController extends AbstractController
      * @Route("/admin/transfert/{year}-{month}", name="admin.transfert.date")
      * @param Request $request
      * @param UserInterface $user
+     * @param MailNotification $notification
      * @return Symfony\Component\HttpFoundation\Response
      */
-    public function changeDate(Request $request, UserInterface $user): Response
+    public function changeDate(Request $request, UserInterface $user, MailNotification $notification): Response
     {
-        return $this->index($request, $user);
+        return $this->index($request, $user, $notification);
     }
 
     public function setPeriod(string $period): Void
@@ -137,17 +141,16 @@ class AdminTransfertController extends AbstractController
         return $data;
     }
 
-    private function generatePain($data, $user)
+    private function generatePain($data, $user, $notification)
     {
         $dataReglement = $this->setData($data['value'], $data['option']);
         $attachment = $this->generateSepaFile($dataReglement, date('Ymd').'_'.str_replace(' ', '', $data['option']->getName()).'_'.'painTransfert'.'.xml');
 
-        $body = 'Virement de <b>'.$data['value'].' €</b> demandé par '.strtoupper($user->getUsername()).'<br/>
-            pour le partenaire : '.$data['option']->getName().'<br/>';
+        $body = 'Virement de '.$data['value'].' € '.'</br>'.'demandé par '.strtoupper($user->getUsername()).'</br>'.' pour le partenaire : '.$data['option']->getName();
 
-        dump($body);
-        /*$destination = $this->params->get('upload');
-        @unlink($destination.$attachment['url']);*/ //Si le fichier n'existe pas, aucune erreur n'est relévée
+        $destination = $this->params->get('upload');
+        $fileAttachment = $destination.$attachment['url'];
+        $notification->notifyMail($data, $body, $fileAttachment);
     }
 
     private function setData($amount, $option)

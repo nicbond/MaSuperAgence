@@ -1,0 +1,103 @@
+Surface;Pieces;Chambres;Etages;Chauffage;Ville;Code Postal;Prix 
+32;7;4;6;Electrique;Etiennenec;40047;1 091 340 
+52;2;6;11;Electrique;Duhamel;51701;1 088 539 
+46;9;4;13;Electrique;Etienne;96 162;1 078 246 
+231;4;6;8;Gaz;Dumont;83365;1 076 923 
+88;10;4;14;Electrique;Parentboeuf;33029;1 073 057 
+203;3;2;13;Electrique;Collet-sur-Morin;45138;1 031 926 
+82;10;6;7;Gaz;Mercier;79 217;1 024 564 
+182;4;3;15;Electrique;Bourdonboeuf;89737;1 023 497 
+49;8;7;8;Electrique;JolyBourg;73134;1 020 072 
+106;3;3;0;Gaz;Leclerc-les-Bains;79716;1 017 833 
+194;8;1;4;Electrique;Clement;52435;993 489 
+117;4;5;15;Gaz;Vaillant-la-Forêt;25 853;989 486 
+262;3;3;15;Gaz;BourdonBourg;94 363;989 423 
+297;4;6;13;Electrique;Paul;42953;982 274 
+34;7;7;7;Electrique;Bonneau;93582;975 795 
+217;3;6;7;Electrique;Humbert-la-Forêt;76 340;955 408 
+163;3;5;13;Gaz;Parisnec;28 398;953 502 
+163;7;6;5;Gaz;Benoit-sur-Boulay;23 734;932 616 
+212;2;2;0;Gaz;Navarro;21 374;929 384 
+350;10;1;9;Electrique;Mendesdan;27455;913 541 
+298;8;3;9;Electrique;Delattre-les-Bains;42 773;900 833 
+45;8;9;7;Electrique;Chartier;18976;867 756 
+234;3;2;10;Electrique;Parent;79973;849 511 
+216;8;1;6;Electrique;Fernandez-la-Forêt;07048;841 098 
+247;6;4;10;Electrique;Fouquet;46 417;831 279 
+37;10;1;11;Gaz;Alves-les-Bains;66577;828 629 
+160;3;7;15;Electrique;Bourgeois;78000;822 908 
+342;6;4;14;Gaz;Couturier-la-Forêt;35782;820 077 
+209;4;2;14;Electrique;Charpentier;24 887;819 342 
+34;10;9;0;Electrique;Guyon-sur-Mer;68 784;805 946 
+259;7;1;15;Electrique;Simon-sur-Mer;02 896;788 575 
+107;2;2;9;Electrique;Gomez-les-Bains;46515;785 001 
+272;7;3;0;Electrique;Lecomte-sur-Girard;96936;759 709 
+56;3;1;14;Electrique;Pereira-sur-Maillot;78 522;756 670 
+314;10;7;14;Electrique;Bodin;62458;749 310 
+313;3;8;8;Electrique;HebertVille;01583;744 529 
+337;9;9;2;Gaz;Vallet;77250;727 915 
+129;6;5;13;Electrique;Charpentier;21 657;718 633 
+323;10;1;15;Gaz;Le Gall-sur-Mer;31532;717 459 
+209;9;2;15;Gaz;Leblanc;29440;698 332 
+38;4;8;13;Electrique;Barre-sur-Mer;07588;691 166 
+300;2;2;4;Electrique;Laporte-la-Forêt;95108;667 836 
+306;5;8;12;Electrique;BerthelotVille;91655;663 772 
+255;7;6;10;Gaz;Lesage-les-Bains;89 505;660 460 
+268;7;3;15;Electrique;Perret;31386;628 924 
+42;9;7;9;Gaz;Robin;08088;619 326 
+32;8;1;7;Electrique;Adam-sur-Rodriguez;64 137;602 572 
+300;3;3;1;Gaz;Maryboeuf;76588;592 572 
+139;10;5;3;Electrique;Noel-les-Bains;49 727;580 541 
+40;6;6;3;Gaz;Hoaraunec;23647;578 503 
+209;9;7;11;Electrique;Martinez;51491;564 765 
+29;7;5;4;Electrique;Renault;71787;550 104 
+41;6;7;13;Electrique;Bertin;05 940;544 048 
+185;9;8;12;Electrique;GarnierVille;02140;543 303 
+206;5;6;15;Gaz;Bonnin;72 271;511 252 
+225;9;6;2;Gaz;Gimenez-sur-Lelievre;00 455;488 754 
+110;8;2;11;Gaz;Mercierboeuf;47097;486 257 
+79;3;6;8;Gaz;Laine;22 233;480 429 
+170;6;4;15;Gaz;Martinez;53761;468 294 
+313;9;1;2;Electrique;Jacquet;60820;463 375 
+288;8;8;8;Electrique;Legrand-sur-Mer;67409;424 838 
+217;8;5;10;Gaz;Mariedan;00 387;421 231 
+296;9;9;13;Electrique;Fouquet;64 938;416 697 
+71;9;9;6;Gaz;Lenoir-les-Bains;21823;411 103 
+47;6;5;2;Gaz;Guillot;03703;405 119 
+321;7;7;8;Electrique;Allardboeuf;86 026;403 957 
+99;8;8;10;Electrique;Fernandezboeuf;71669;388 321 
+39;10;6;11;Electrique;FernandezVille;67452;375 084 
+120;5;3;0;Electrique;Paris 8e Arrondissement;75008;345 000 
+234;6;1;10;Gaz;Carpentier-sur-Dupuis;20902;340 649 
+207;8;8;3;Electrique;Vaillant;77 575;340 075 
+48;3;3;7;Gaz;MailletVille;25463;336 212 
+340;5;6;3;Electrique;Blanchet;07 064;335 392 
+88;4;9;1;Electrique;LoiseauVille;41 169;333 167 
+239;4;8;10;Electrique;CordierBourg;43 348;328 718 
+160;8;5;1;Electrique;Les Clayes-sous-Bois;78340;320 000 
+271;6;3;14;Electrique;Klein;96333;317 683 
+273;4;5;1;Gaz;Etienne;18 357;317 622 
+139;10;6;5;Gaz;LerouxVille;89625;317 174 
+306;6;5;2;Electrique;Etienne;39 757;308 624 
+285;10;8;1;Electrique;Munoz;78910;302 769 
+336;3;9;7;Electrique;Royer-les-Bains;70966;270 295 
+197;2;7;2;Electrique;Peltier;61659;265 268 
+210;7;4;1;Electrique;Jacquet;09942;249 137 
+319;2;8;12;Gaz;Legros-les-Bains;45 521;247 354 
+204;2;4;12;Gaz;FerrandBourg;38 364;244 014 
+203;4;1;5;Gaz;Legrosnec;18896;223 077 
+122;4;2;10;Gaz;Maillot;87 297;205 406 
+60;4;3;4;Gaz;Paris 8e Arrondissement;75008;200 000 
+68;3;2;4;Electrique;Plaisir;78370;191 000 
+326;9;7;4;Gaz;Normand;41451;186 307 
+228;2;8;3;Gaz;Barthelemy;63478;185 192 
+84;2;4;0;Electrique;Guillot;58313;180 625 
+109;9;8;5;Gaz;Bourgeois;13248;166 024 
+28;3;3;6;Gaz;Vasseurnec;00082;157 093 
+56;8;4;4;Gaz;FischerVille;02019;148 314 
+112;2;4;9;Electrique;Dubois-les-Bains;81 668;146 399 
+131;4;2;7;Gaz;Lebretonboeuf;40 087;138 813 
+246;4;2;4;Gaz;Guillon-la-Forêt;80 975;129 485 
+319;7;5;7;Electrique;Leclercdan;97 563;126 066 
+318;7;6;1;Gaz;Guilbertboeuf;46575;119 732 
+291;6;7;4;Gaz;Loiseau-sur-Maury;78 337;105 647 
