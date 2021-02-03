@@ -6,22 +6,28 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use App\Notification\MailNotification;
 use Symfony\Component\HttpFoundation\Request;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use App\Notification\MailNotification;
+use App\Repository\PropertyRepository;
 use App\Service\XmlWriter;
 use App\Entity\Option;
 use App\Exception;
 
 class AdminTransfertController extends AbstractController
 {
-    public function __construct(ParameterBagInterface $params)
+    public function __construct(ParameterBagInterface $params, PropertyRepository $repository)
     {
         $this->params = $params;
+        $this->repository = $repository;
     }
 
     /**
@@ -211,5 +217,67 @@ class AdminTransfertController extends AbstractController
         if ($attachment) {
             return $attachment;
         }
+    }
+
+    /**
+     * @Route("/admin/transfert/excel", name="admin.biens.excel")
+     * @param Request $request
+     * @return Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function generateExcel(Request $request): BinaryFileResponse
+    {
+        $properties = $this->repository->findAllByPriceDesc();
+        $x = 2;
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet = $spreadsheet->createSheet(0);
+
+        $sheet->setCellValueByColumnAndRow(1, 1, "Surface");
+        $sheet->setCellValueByColumnAndRow(2, 1, "Pièces");
+        $sheet->setCellValueByColumnAndRow(3, 1, "Chambres");
+        $sheet->setCellValueByColumnAndRow(4, 1, "Etages");
+        $sheet->setCellValueByColumnAndRow(5, 1, "Chauffage");
+        $sheet->setCellValueByColumnAndRow(6, 1, "Ville");
+        $sheet->setCellValueByColumnAndRow(7, 1, "Code Postal");
+        $sheet->setCellValueByColumnAndRow(8, 1, "Prix");
+
+        foreach ($properties as $property) {
+            $surface = $property->getSurface();
+            $rooms = $property->getRooms();
+            $bedrooms = $property->getBedrooms();
+            $floor = $property->getFloor();
+            $heat = $property->getHeatType();
+            $city = $property->getCity();
+            $postal_code = str_replace(' ', '', $property->getPostalCode());
+            $price = $property->getFormattedPrice();
+
+            $sheet->setCellValueByColumnAndRow(1, $x, $surface);
+            $sheet->setCellValueByColumnAndRow(2, $x, $rooms);
+            $sheet->setCellValueByColumnAndRow(3, $x, $bedrooms);
+            $sheet->setCellValueByColumnAndRow(4, $x, $floor);
+            $sheet->setCellValueByColumnAndRow(5, $x, $heat);
+            $sheet->setCellValueByColumnAndRow(6, $x, $city);
+            $sheet->setCellValueByColumnAndRow(7, $x, $postal_code);
+            $sheet->setCellValueByColumnAndRow(8, $x, $price);
+            $x++;
+        }
+
+        $sheet->setTitle("Biens non vendus");
+
+        // Ces deux lignes permettent de créer une nouvelle feuille
+        $sheet = $spreadsheet->createSheet(1);
+        $sheet->setTitle("My Second Worksheet");
+
+        // Create your Office 2007 Excel (XLSX Format)
+        $writer = new Xlsx($spreadsheet);
+
+        // Create a Temporary file in the system
+        $fileName = 'my_first_excel_symfony4.xlsx';
+        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
+        $writer->save($temp_file);
+
+        // Return the excel file as an attachment
+        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
     }
 }
