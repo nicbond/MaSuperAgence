@@ -74,6 +74,19 @@ class PropertyRepository extends ServiceEntityRepository
         ;
     }
 
+    /**
+     * @return Property[] Returns an array of Property objects
+    */
+    public function findAllByPriceDesc(): array
+    {
+        $query = $this->findVisibleQuery();
+
+        $query = $query
+            ->orderBy('p.price', 'DESC');
+
+       return $query->getQuery()->getResult();
+    }
+
     private function findVisibleQuery(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
