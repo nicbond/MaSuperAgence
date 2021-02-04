@@ -119,7 +119,7 @@ class AdminTransfertController extends AbstractController
     /**
      * @return $periods
      */
-    public function getPeriod()
+    public function getPeriod(): \stdClass
     {
         $data = new \stdClass();
         if ($this->get('session')->get('date', 'notSet') == 'notSet') {
@@ -147,7 +147,7 @@ class AdminTransfertController extends AbstractController
         return $data;
     }
 
-    private function generatePain($data, $user, $notification)
+    private function generatePain($data, $user, $notification): void
     {
         $dataReglement = $this->setData($data['value'], $data['option']);
         $attachment = $this->generateSepaFile($dataReglement, date('Ymd').'_'.str_replace(' ', '', $data['option']->getName()).'_'.'painTransfert'.'.xml');
@@ -159,7 +159,7 @@ class AdminTransfertController extends AbstractController
         $notification->notifyMail($data, $body, $fileAttachment);
     }
 
-    private function setData($amount, $option)
+    private function setData($amount, $option): array
     {
         $dataReglement['header'] = new \stdClass();
         $dataReglement['header']->msgId                 = 'EBICSWIREREGLEMENT/'.date('Y-m-d');
@@ -186,7 +186,7 @@ class AdminTransfertController extends AbstractController
         return $dataReglement;
     }
 
-    private function generateSepaFile($data, $name)
+    private function generateSepaFile($data, $name): array
     {
         $xmlWriter = new \App\Service\XmlWriter();
         $file = $this->params->get('file');
