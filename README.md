@@ -31,3 +31,10 @@ URLs:
 
 Pour le téléchargement du pain, celui-ci est disponible à cette adresse:
  - https://www.isabel.eu/knowledge_base_ibs6/fr/03_client_solutions/04_ebanking/02_transactions/01_creating_transactions/isabel-6-supported-banking-file-formats.html
+ 
+Après avoir cloné le projet en local, il faudra exécuter les commandes suivantes:
+ - composer install
+ - php bin/console doctrine:database:create
+ - php bin/console doctrine:schema:update --dump-sql
+ - php bin/console doctrine:schema:update --force
+ - php bin/console doctrine:fixtures:load
